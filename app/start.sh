@@ -8,5 +8,9 @@ cat <<EOF
 $(cat /home/mitmproxy/.mitmproxy/mitmproxy-ca-cert.pem)
 # please load CA cert [OVER]
 EOF
-
-mitmweb  --web-host 0.0.0.0 -s /app/curl.py
+OPTION="-s /app/curl.py --set keep_host_header=true --showhost"
+if [[ $MODE = "reverse" ]];then
+    mitmweb  --web-host 0.0.0.0 $OPTION --mode reverse:$UPSTREAM
+else
+    mitmweb  --web-host 0.0.0.0 $OPTION --mode regular
+fi
