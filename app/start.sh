@@ -8,7 +8,10 @@ cat <<EOF
 $(cat /home/mitmproxy/.mitmproxy/mitmproxy-ca-cert.pem)
 # please load CA cert [OVER]
 EOF
-PARAMS="-s /app/curl.py -s /app/keep.py --set keep_host_header=true --showhost ${PARAMS:-}"
+if [ $VERBOSE = TRUE ];then
+  PARAMS="-s /app/curl.py ${PARAMS:-}"
+fi 
+PARAMS="-s /app/keep.py --set keep_host_header=true --showhost ${PARAMS:-}"
 OPTIONS="--set view_order_reversed=true ${OPTIONS:-}"
 nginx -c /app/nginx.conf
 set -x
