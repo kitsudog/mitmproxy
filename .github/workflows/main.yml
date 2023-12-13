@@ -6,6 +6,7 @@ on:
       - '.ci/Dockerfile'
     branches:
       - master
+      - main
     tags:
       - 'v*'
 
