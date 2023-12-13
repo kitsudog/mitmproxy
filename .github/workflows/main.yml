@@ -5,7 +5,7 @@ on:
     paths:
       - '.ci/Dockerfile'
     branches:
-      - main
+      - master
     tags:
       - 'v*'
 
