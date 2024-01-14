@@ -1,4 +1,4 @@
-FROM mitmproxy/mitmproxy:10.1.5
+FROM mitmproxy/mitmproxy:10.2.1
 RUN apt-get update \
     && apt-get install -y --no-install-recommends procps curl nginx tcpdump telnet \
     && rm -rf /var/lib/apt/lists/*
